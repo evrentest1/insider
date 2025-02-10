@@ -1,0 +1,126 @@
+linters:
+  fast: false
+
+  enable:
+    - asasalint
+    - asciicheck
+    - bidichk
+    - bodyclose
+    - contextcheck
+    - durationcheck
+    - errcheck 
+    - errname
+    - errorlint
+    - copyloopvar
+    - gocritic
+    - gofmt
+    - gofumpt
+    - goimports
+    - gomoddirectives
+    - gosec
+    - gosimple
+    - govet
+    - ineffassign
+    - misspell
+    - nakedret
+    - nilerr
+    - nilnil
+    - noctx
+    - nolintlint
+    - prealloc
+    - predeclared
+    - promlinter
+    - reassign
+    - revive
+    - rowserrcheck
+    - sqlclosecheck
+    - staticcheck
+    - stylecheck
+    - tagliatelle
+    - tenv
+    - testableexamples
+    - thelper
+    - tparallel
+    - unconvert
+    - unparam
+    - unused
+    - usestdlibvars
+    - wastedassign
+    - containedctx
+    - decorder
+    - exhaustive
+    - forcetypeassert
+    - gocognit
+    - goconst
+    - gocyclo
+    - err113
+    - mnd
+    - loggercheck
+    - nonamedreturns
+    - paralleltest
+    - forbidigo
+
+linters-settings:
+  gocritic:
+    enabled-tags:
+      - diagnostic
+      - experimental
+      - opinionated
+      - performance
+      - style
+  errcheck:
+    check-type-assertions: true
+    check-blank: true
+  govet:
+    disable:
+      - fieldalignment
+  nakedret:
+    max-func-lines: 1
+  unparam:
+    check-exported: true
+  funlen:
+    lines: 90
+    statements: 50
+  golint:
+    min-confidence: 0.6
+  gci:
+    skip-generated: true
+    no-lex-order: true
+
+  issues:
+    exclude-dirs:
+      - (^|/)bin($|/)
+      - (^|/)examples($|/)
+    exclude-rules:
+      - path: _test.go
+        linters:
+          - funlen
+          - maligned
+          - noctx
+          - scopelint
+          - bodyclose
+          - lll
+          - goconst
+          - gocognit
+          - gocyclo
+          - gochecknoinits
+          - dupl
+          - staticcheck
+          - revive
+          - gosec
+          - copyloopvar
+      - path: _mock.go
+        linters:
+          - funlen
+          - maligned
+          - noctx
+          - scopelint
+          - bodyclose
+          - lll
+          - goconst
+          - gocognit
+          - gocyclo
+          - gochecknoinits
+          - dupl
+          - staticcheck
+          - revive

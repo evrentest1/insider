@@ -1,0 +1,39 @@
+services:
+  postgres:
+    container_name: insider_postgres
+    image: postgres:15.7
+    command: ["-c", "log_min_duration_statement=500"]
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: insider
+    volumes:
+      - postgresql_data:/var/lib/postgresql/data
+
+  redis:
+    container_name: insider_redis
+    image: redis
+    restart: always
+    ports:
+      - "6379:6379"
+
+  message-handler:
+    container_name: insider_message_handler
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      POSTGRES_HOST: postgres
+      REDIS_HOST: redis
+
+volumes:
+  postgresql_data:

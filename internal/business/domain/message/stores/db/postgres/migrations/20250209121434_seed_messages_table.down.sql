@@ -1,0 +1,1 @@
+DELETE FROM messages WHERE phone_number = '+905354483333';

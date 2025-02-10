@@ -1,0 +1,11 @@
+version: "2"
+sql:
+  - engine: "postgresql"
+    queries: "internal/business/domain/message/stores/db/postgres/queries"
+    schema: "internal/business/domain/message/stores/db/postgres/migrations"
+    gen:
+      go:
+        package: "db"
+        out: "internal/business/domain/message/stores/db/postgres"
+        emit_interface: true
+        json_tags_case_style: "snake"

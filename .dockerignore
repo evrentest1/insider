@@ -1,0 +1,10 @@
+.githooks
+.github
+e2e
+.editorconfig
+.gitignore
+.golangci.yml
+.prettierignore
+.prettierrc
+docker-compose.yml
+Readme.md

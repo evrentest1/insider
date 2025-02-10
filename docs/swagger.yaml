@@ -1,0 +1,82 @@
+definitions:
+  echo.HTTPError:
+    properties:
+      message: {}
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  title: API
+  version: "1.0"
+paths:
+  /v1/health:
+    get:
+      consumes:
+      - application/json
+      description: Health information
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "500":
+          description: Cache is not healthy
+          schema:
+            $ref: '#/definitions/echo.HTTPError'
+      summary: Health Info
+      tags:
+      - health
+  /v1/messages/sent:
+    get:
+      consumes:
+      - application/json
+      description: Get sent messages
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "404":
+          description: No messages found
+          schema:
+            $ref: '#/definitions/echo.HTTPError'
+        "500":
+          description: Failed to get messages
+          schema:
+            $ref: '#/definitions/echo.HTTPError'
+      summary: Get sent messages
+      tags:
+      - messages
+  /v1/service/message-sender/start:
+    post:
+      consumes:
+      - application/json
+      description: Start auto message sending
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "500":
+          description: Failed to start auto message sending
+          schema:
+            $ref: '#/definitions/echo.HTTPError'
+      summary: Start auto message sending
+      tags:
+      - auto message sending
+  /v1/service/message-sender/stop:
+    post:
+      consumes:
+      - application/json
+      description: Stop auto message sending
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Stop auto message sending
+      tags:
+      - auto message sending
+schemes:
+- http
+swagger: "2.0"

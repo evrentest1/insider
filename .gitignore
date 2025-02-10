@@ -6,5 +6,5 @@
 build
 mocks_*
 __debug_bin*
-/docs
 /main
+/bin
